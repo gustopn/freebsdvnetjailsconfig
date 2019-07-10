@@ -8,7 +8,7 @@ jail_created_exec() {
 }
 
 jail_poststop_exec() {
-  /sbin/ifconfig "epair${i}a" destroy
+  /sbin/ifconfig "epair${1}a" destroy
 }
 
 jailname="$2"
