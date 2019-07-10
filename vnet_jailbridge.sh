@@ -29,7 +29,7 @@ jail_poststop_exec() {
   then \
     for i in `cat /tmp/"epair_${jailname}.txt"`
     do \
-      /sbin/ifconfig "${i}" destroy;
+      /sbin/ifconfig "${i}" destroy
     done
   fi
 }
