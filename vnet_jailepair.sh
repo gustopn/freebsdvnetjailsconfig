@@ -14,8 +14,8 @@ jail_poststart_exec() {
   /usr/sbin/jexec "${2}" /sbin/ifconfig "epair${1}b" inet "${3}.${5}" netmask 255.255.255.252 up
   /usr/sbin/jexec "${2}" /sbin/ifconfig "epair${1}b" inet6 "${6}${7}" prefixlen 128
   /usr/sbin/jexec "${2}" /sbin/route add -inet default "${3}.${4}"
-  /usr/sbin/jexec "${2}" /sbin/route add -inet6 default "${jailnetlinklocala}"
-  /sbin/route add -inet6 "${6}${7}" "${jailnetlinklocalb}"
+  /usr/sbin/jexec "${2}" /sbin/route add -inet6 default "${jailnetlinklocala}%epair${1}b"
+  /sbin/route add -inet6 "${6}${7}" "${jailnetlinklocalb}%epair${1}a"
 }
 
 jail_prestop_exec() {
